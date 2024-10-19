@@ -1,6 +1,18 @@
-from django.urls import path
+from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import PostViewSet
+from .views import (
+    UserViewSet, CreditScoreViewSet, FinancialSituationViewSet,
+    OpportunityViewSet, UserOpportunityViewSet, AdviceViewSet
+)
 
-post_router = DefaultRouter()
-post_router.register(r'posts', PostViewSet)
+router = DefaultRouter()
+router.register(r'users', UserViewSet)
+router.register(r'credit-scores', CreditScoreViewSet)
+router.register(r'financial-situations', FinancialSituationViewSet)
+router.register(r'opportunities', OpportunityViewSet)
+router.register(r'user-opportunities', UserOpportunityViewSet)
+router.register(r'advice', AdviceViewSet)
+
+urlpatterns = [
+    path('', include(router.urls)),
+]
