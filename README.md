@@ -17,13 +17,12 @@ Our mission is to help you achieve better financial outcomes through tailored in
 - **Python 3.8+**
 - **Django 3.2+**
 - **PostgreSQL** for database management
-- **Docker** (optional) for containerized deployment
 
 ### **Installation**
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/creditrise.git
-   cd creditrise
+   git clone (https://github.com/Lmx154/hackathon2024.git)
+   cd hackathon2024
    ```
 
 2. **Install dependencies:**
@@ -67,7 +66,7 @@ Our mission is to help you achieve better financial outcomes through tailored in
 We welcome contributions to **CreditRise**. If you’d like to help improve the app or fix bugs, please fork the repository, create a new branch, and submit a pull request.
 
 ## **License**
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+This project is licensed under the MIT License.
 
 ## **Contact**
-For questions, feedback, or support, please contact [your-email@example.com].
+For questions, feedback, or support, please contact.
