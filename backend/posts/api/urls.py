@@ -13,6 +13,5 @@ router.register(r'opportunities', OpportunityViewSet)
 router.register(r'user-opportunities', UserOpportunityViewSet)
 router.register(r'advice', AdviceViewSet)
 
-urlpatterns = [
-    path('', include(router.urls)),
-]
+# No additional 'api/' prefix here
+urlpatterns = router.urls

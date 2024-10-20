@@ -1,34 +1,50 @@
-import { useState, useEffect } from 'react'
-
+import React, { useEffect, useState } from 'react';
+import { getUsers, addUser } from './api/apiService';
 
 function App() {
-  const [data, setData] = useState([])
+  const [users, setUsers] = useState([]);
 
-  useEffect(()=> {
-    async function fetchData() {
-      console.log(import.meta.env.VITE_API_URL)
+  useEffect(() => {
+    const fetchUsers = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}`)
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const result = await response.json();
-        console.log(result)
-        setData(result);
-      } catch(error) {
-        console.error('Error fetching data:', error);
+        const data = await getUsers();  // Call the API service function
+        setUsers(data);
+      } catch (error) {
+        console.error('Failed to fetch users:', error);
       }
+    };
 
-    }
-
-    fetchData();
+    fetchUsers();
   }, []);
 
+  const handleAddUser = async () => {
+    const newUser = {
+      username: 'new_user',
+      email: 'new_user@example.com',
+      first_name: 'New',
+      last_name: 'User',
+    };
+
+    try {
+      await addUser(newUser);  // Call the API service function
+      const updatedUsers = await getUsers();  // Fetch updated user list
+      setUsers(updatedUsers);
+    } catch (error) {
+      console.error('Failed to add user:', error);
+    }
+  };
+
   return (
-    <>
-      hello world
-    </>
-  )
+    <div>
+      <h1>User List</h1>
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>{user.username}</li>
+        ))}
+      </ul>
+      <button onClick={handleAddUser}>Add User</button>
+    </div>
+  );
 }
 
-export default App
+export default App;
