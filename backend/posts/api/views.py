@@ -1,5 +1,8 @@
 from rest_framework.viewsets import ModelViewSet
 from ..models import User, CreditScore, FinancialSituation, Opportunity, UserOpportunity, Advice
+from rest_framework.viewsets import ViewSet
+from rest_framework.response import Response
+from posts.Services.user_services import get_user_profile
 from .serializers import (
     UserSerializer, CreditScoreSerializer, FinancialSituationSerializer,
     OpportunitySerializer, UserOpportunitySerializer, AdviceSerializer
@@ -34,3 +37,7 @@ class UserOpportunityViewSet(ModelViewSet):
 class AdviceViewSet(ModelViewSet):
     queryset = Advice.objects.all()
     serializer_class = AdviceSerializer
+
+class UserProfileViewSet(ViewSet):
+    profile_data = get_user_profile(pk)
+    return Response(profile_data)

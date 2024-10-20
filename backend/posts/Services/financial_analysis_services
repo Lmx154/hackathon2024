@@ -1,0 +1,22 @@
+from posts.models import User, FinancialSituation
+
+def analyze_financial_health(user_id):
+    try:
+        user = User.objects.get(id=user_id)
+        financial_situation= FinancialSituation.objects.filter(user=user).first()
+
+        if not financial_situation:
+            return{'message': 'No financial situation data available'}
+        
+        savings_to_income_ratio = (financial_situation.savings / financial_situation.annual_income)
+        debt_to_income_ratio = (financial_situation.debt / financial_situation.annual_income)
+
+        health_analysis = {
+            'saving_to_income_ratio':round(savings_to_income_ratio,2),
+            'debt_to_income_ratio': round(debt_to_income_ratio,2),
+            'status':'Good' if savings_to_income_ratio > 0.2 and debt_to_income_ratio < 0.3 else 'Needs Improvement',
+
+        }
+        return health_analysis
+    except user==None:
+        return{'error':'User not found'}
