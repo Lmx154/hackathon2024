@@ -1,4 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './Home.jsx';
+import Login from './Login.jsx';
+import Signup from './Signup.jsx'
 import { getUsers, addUser } from './api/apiService';
 
 function App() {
@@ -34,17 +39,17 @@ function App() {
     }
   };
 
+
+
   return (
-    <div>
-      <h1>User List</h1>
-      <ul>
-        {users.map((user) => (
-          <li key={user.id}>{user.username}</li>
-        ))}
-      </ul>
-      <button onClick={handleAddUser}>Add User</button>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
+    </Router>
   );
 }
 
-export default App;
+export default App

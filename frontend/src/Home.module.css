@@ -1,0 +1,119 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+}
+
+
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 15%;
+    background-color: red;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    box-shadow:0px 0px 12px #333;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.navbar{
+    display: flex;
+}
+
+
+.navbar a{
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: .3s;
+    padding: 10px 15px; 
+    border-radius: 50px;
+    background-color: #0ed51b;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: #00abf0;
+    background-color: black;
+}
+
+.navrightsection {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: orange;
+}
+
+.searchcontainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search{
+    width: 200px;
+    padding: 8px 40px 8px 12px;
+    border: 1px solid #0ed51b;
+    border-radius: 15px;
+
+}
+
+.searchbtn {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #333;
+}
+
+.searchbtn:hover {
+    color: #00abf0;
+}
+
+.loginbubble {
+    background-color: white;
+    border: 2px solid #ccc;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: 500;
+    color: black;
+    cursor: pointer;
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+.loginbubble:hover {
+    background-color: #00abf0;
+    color: white;
+    border-color: #00abf0;
+}
+
+.home{
+    height: 100vh;
+    display: flex;
+    padding: 0 10%;
+    background-color: lavender;
+}
+
+.homecontent{
+    flex: 1;
+    background-color: aqua;
+    padding: 20px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
