@@ -45,14 +45,14 @@ class FinancialSituation(models.Model):
 
 # Opportunity model
 class Opportunity(models.Model):
-    name = models.CharField(max_length=200)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='Opportunities')
     description = models.TextField()
     type = models.CharField(max_length=100)
     eligibility_criteria = models.TextField()
     is_national = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.name
+        return f"Opportunites for {self.user.username}"
 
 # UserOpportunity model
 class UserOpportunity(models.Model):
@@ -71,3 +71,5 @@ class Advice(models.Model):
 
     def __str__(self):
         return f"Advice for {self.user.username}"
+    
+    print("hello world")
