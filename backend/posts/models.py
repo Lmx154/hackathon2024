@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.hashers import make_password, check_password
 
 # Post model
 class Post(models.Model):
@@ -7,8 +8,8 @@ class Post(models.Model):
 
     def __str__(self):
         return f"Post: {self.title}"
-    
- # User model   
+
+# User model   
 class User(models.Model):
     username = models.CharField(max_length=150, unique=True)
     email = models.EmailField(unique=True)
@@ -18,6 +19,15 @@ class User(models.Model):
     is_veteran = models.BooleanField(default=False)
     is_disabled = models.BooleanField(default=False)
     date_joined = models.DateTimeField(auto_now_add=True)
+
+    def set_password(self, raw_password):
+        """Hashes the password and sets it."""
+        self.password = make_password(raw_password)
+        self.save()
+
+    def check_password(self, raw_password):
+        """Checks if the provided password matches the stored hash."""
+        return check_password(raw_password, self.password)
 
     def __str__(self):
         return f"{self.username}"
