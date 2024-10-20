@@ -39,5 +39,7 @@ class AdviceViewSet(ModelViewSet):
     serializer_class = AdviceSerializer
 
 class UserProfileViewSet(ViewSet):
-    profile_data = get_user_profile(pk)
-    return Response(profile_data)
+    def retrive(self,request,pk=None):
+        profile_data = get_user_profile(pk)
+        return Response(profile_data)
+    

@@ -1,4 +1,4 @@
-from posts.models import user, CreditScore, FinancialSituation, UserOpportunity
+from posts.models import User, CreditScore, FinancialSituation, UserOpportunity
 
 def get_user_profile(user_id):
     try:
